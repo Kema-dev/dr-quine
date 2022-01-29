@@ -1,0 +1,1 @@
+/*This is a quine*/main(a){printf(a="/*This is a quine*/main(a){printf(a=%c%s%c,34,a,34);second('b');/*This is a second comment*/}",34,a,34);second('b');/*This is a second comment*/}second(a){printf(a="second(a){printf(a=%c%s%c,34,a,34);}",34,a,34);}
