@@ -58,6 +58,7 @@ test:	directories $(OBJECTS)
 	@ls | grep Sully
 	@printf "Content of all files:\n"
 	@cat Sully_*
+	@printf "\n"
 
 #Link
 $(TARGETDIR)/$(TARGET): $(OBJECTS)
