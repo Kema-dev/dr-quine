@@ -2,7 +2,7 @@
 CC			:=	gcc
 
 #The Target Binary Program
-TARGET		:=	Colleen
+TARGET		:=	Shortest
 DEBUGOUT	:=	debug.out
 
 #The Directories, Source, Includes, Objects, Binary and Resources

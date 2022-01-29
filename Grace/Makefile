@@ -2,7 +2,7 @@
 CC			:=	gcc
 
 #The Target Binary Program
-TARGET		:=	Colleen
+TARGET		:=	Grace
 DEBUGOUT	:=	debug.out
 
 #The Directories, Source, Includes, Objects, Binary and Resources
@@ -11,10 +11,11 @@ INCDIR		:=	inc
 OBJDIR		:=	obj
 TARGETDIR	:=	bin
 DIFFDIR		:=	diff
+DIFFNAME	:=	Grace_kid
 SRCEXT		:=	c
 HDEXT		:=	h
 OBJEXT		:=	o
-DIFFEXT		:=	diff
+DIFFEXT		:=	c
 LIBDIR		:=	
 ARG			:=	
 
@@ -29,7 +30,7 @@ SPECIALLIB	:=
 #DO NOT EDIT BELOW THIS LINE
 #---------------------------------------------------------------------------------
 HEADERS		:=	
-SOURCES		:=	$(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
+SOURCES		:=	$(SRCDIR)/Grace.$(SRCEXT)
 OBJECTS		:=	$(patsubst $(SRCDIR)/%,$(OBJDIR)/%,$(SOURCES:.$(SRCEXT)=.$(OBJEXT)))
 
 #Defauilt Make
@@ -52,20 +53,20 @@ clean:
 fclean:	clean
 	@$(RM) -rf $(TARGETDIR)
 	@$(RM) -rf $(DIFFDIR)
-	@$(RM) -rf Grace_kid.c
+	@$(RM) -rf $(DIFFNAME).$(DIFFEXT)
 
 test:	directories $(OBJECTS)
 	$(CC) $(INC) $(SPECIALLIB) -o $(TARGETDIR)/$(TARGET) $(OBJECTS) $(LIB)
 	@clear
-	@printf "Target output:      "
 	@./$(TARGETDIR)/$(TARGET)
+	@printf "Target output:      "
+	@cat $(DIFFNAME).$(DIFFEXT)
 	@printf "\n"
 	@printf "Program sourcecode: "
 	@cat $(SRCDIR)/$(TARGET).$(SRCEXT)
 	@printf "\n"
-	@./$(TARGETDIR)/$(TARGET) > $(DIFFDIR)/$(TARGET).$(DIFFEXT)
 	@printf "Diff output:\n"
-	@diff $(DIFFDIR)/$(TARGET).$(DIFFEXT) $(SRCDIR)/$(TARGET).$(SRCEXT)
+	@diff $(DIFFNAME).$(DIFFEXT) $(SRCDIR)/$(TARGET).$(SRCEXT)
 
 #Link
 $(TARGETDIR)/$(TARGET): $(OBJECTS)
